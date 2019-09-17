@@ -3,9 +3,9 @@ import React, { Component } from "react";
 import "semantic-ui-css/semantic.min.css";
 
 import { Grid } from "semantic-ui-react";
-import Navbar from "./component/layout/Navbar";
 import SideMenu from "./component/layout/SideMenu";
 import "./App.css";
+// eslint-disable-next-line
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";

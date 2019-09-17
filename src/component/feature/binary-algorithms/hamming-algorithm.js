@@ -1,5 +1,3 @@
-const _ = require("lodash");
-
 function isExponentOf2(num) {
   return Math.log2(num) === Math.round(Math.log2(num));
 }
@@ -87,6 +85,7 @@ export function fixHammingCode(hammingCode) {
     for (let bitObj of p["binaries"]) {
       countBit1 += parseInt(bitObj["bit"], 10);
     }
+    // eslint-disable-next-line
     if (p["parityBit"]["bit"] == countBit1 % 2) {
       p["parityBit"]["isTrue"] = true;
       for (let bitObj of p["binaries"]) {
@@ -122,6 +121,7 @@ export function fixHammingCode(hammingCode) {
   if (wrongBitIndex === -1) {
     result["hammingCode"] = "Hamming code is good!";
   } else {
+    // eslint-disable-next-line
     hammingCode[wrongBitIndex] = hammingCode[wrongBitIndex] == 1 ? "0" : "1";
   }
   let originalBinaries = hammingCode.filter((bit, i) => {

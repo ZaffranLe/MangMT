@@ -4,7 +4,6 @@ import "semantic-ui-css/semantic.min.css";
 
 import {
   Grid,
-  Input,
   Menu
 } from "semantic-ui-react";
 

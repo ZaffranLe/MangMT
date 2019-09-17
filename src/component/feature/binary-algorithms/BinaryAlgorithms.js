@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 
 import {
   Segment,
@@ -18,9 +18,6 @@ const udpChecksumExample = require("./udp-checksum-example.png");
 const hammingCodeExample = require("./hamming-code-example.jpg");
 const crcExample = require("./crc-example.png");
 class ImageModal extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const { img, imgModal, handleCloseModal } = this.props;

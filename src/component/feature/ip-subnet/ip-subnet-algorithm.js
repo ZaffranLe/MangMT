@@ -1,3 +1,5 @@
+const _ = require("lodash");
+
 function decimalToBinary(num) {
     const binary = [];
     while (num !== 0 || binary.length < 8) {
@@ -47,18 +49,22 @@ export default function ipSubnet(ip, subnet = "") {
     result["ipAddr"] = {};
     result["ipAddr"]["name"] = "IP Address";
     result["ipAddr"]["value"] = ip;
-    let ipBinary = ip
-        .split(".")
-        .map(octet => {
-            return decimalToBinary(octet);
-        })
-        .join("");
-    let subnetBinary = subnet["ip"]
-        .split(".")
-        .map(octet => {
-            return decimalToBinary(octet);
-        })
-        .join("");
+    let ipBinary = _.clone(
+        ip
+            .split(".")
+            .map(octet => {
+                return decimalToBinary(octet);
+            })
+            .join("")
+    );
+    let subnetBinary = _.clone(
+        subnet["ip"]
+            .split(".")
+            .map(octet => {
+                return decimalToBinary(octet);
+            })
+            .join("")
+    );
     let networkAddrBinary = "";
     for (let i = 0; i < ipBinary.length; i++) {
         networkAddrBinary += ipBinary[i] == 1 && subnetBinary[i] == 1 ? 1 : 0;
@@ -71,10 +77,10 @@ export default function ipSubnet(ip, subnet = "") {
         return binToDecimal(binary);
     });
     result["networkAddr"] = {};
-    result["networkAddr"]["value"] = networkAddr.join(".");
+    result["networkAddr"]["value"] = _.clone(networkAddr.join("."));
     result["networkAddr"]["name"] = "Network Address";
 
-    let start = networkAddr;
+    let start = _.clone(networkAddr);
     start[start.length - 1] = start[start.length - 1] + 1;
 
     result["range"] = {};
@@ -102,11 +108,11 @@ export default function ipSubnet(ip, subnet = "") {
     for (let i = jumpIndex + 1; i < networkAddr.length; i++) {
         networkAddr[i] = 255;
     }
-    let broadcast = networkAddr;
+    let broadcast = _.clone(networkAddr);
     result["broadcastAddr"] = {};
-    result["broadcastAddr"]["value"] = broadcast.join(".");
     result["broadcastAddr"]["name"] = "Broadcast Address";
-    let end = networkAddr;
+    result["broadcastAddr"]["value"] = broadcast.join(".");
+    let end = _.clone(networkAddr);
     end[end.length - 1] = end[end.length - 1] - 1;
     result["range"]["value"] += end.join(".");
     let totalNumOfHosts = (jump + 1) * Math.pow(256, 3 - jumpIndex);
@@ -121,12 +127,14 @@ export default function ipSubnet(ip, subnet = "") {
     result["subnet"] = {};
     result["subnet"]["name"] = "Subnet Mask";
     result["subnet"]["value"] = subnet["ip"];
-    let wildcardAddr = subnet["ip"]
-        .split(".")
-        .map(octet => {
-            return 255 - parseInt(octet, 10);
-        })
-        .join(".");
+    let wildcardAddr = _.clone(
+        subnet["ip"]
+            .split(".")
+            .map(octet => {
+                return 255 - parseInt(octet, 10);
+            })
+            .join(".")
+    );
     result["wildcardAddr"] = {};
     result["wildcardAddr"]["name"] = "Wildcard Address";
     result["wildcardAddr"]["value"] = wildcardAddr;

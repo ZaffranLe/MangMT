@@ -83,6 +83,7 @@ export default function dijkstra(data) {
     result.map(node => {
       dijkstraTable.headerCells.push(node["node"]);
       dijkstraTable.footerCells.push(node["way"]);
+      return true;
     });
     for (let i = 0; i < result.length; i++) {
       let cells = [];
@@ -99,11 +100,11 @@ export default function dijkstra(data) {
           cell.value = "-";
           cell.lastNode = "-";
         }
-        cells.push(cell);
+        return cells.push(cell);
       });
       dijkstraTable.bodyRows.push(cells);
     }
-    dijkstraTables.push(dijkstraTable);
+    return dijkstraTables.push(dijkstraTable);
   });
   return dijkstraTables;
 }
