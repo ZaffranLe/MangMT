@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/MangMT/static/media/brand-icons.e8c322de.woff2"
   },
   {
-    "revision": "3ae3823641ebdd5485a8",
-    "url": "/MangMT/static/css/main.9dd7dba2.chunk.css"
+    "revision": "dbe37077bb23fd36bbb1",
+    "url": "/MangMT/static/css/main.5307aba4.chunk.css"
   },
   {
     "revision": "680335b0f208d4a7b258c9f0e5ca57f5",
     "url": "/MangMT/static/media/crc-example.680335b0.png"
   },
   {
-    "revision": "7bc0317473c6c5f86071",
-    "url": "/MangMT/static/js/1.7bc03174.chunk.js"
+    "revision": "27937e9bbbcbb1ad8ea7",
+    "url": "/MangMT/static/js/1.27937e9b.chunk.js"
   },
   {
     "revision": "21e4fbeaa5c92dbc4584",
@@ -48,8 +48,8 @@ self.__precacheManifest = [
     "url": "/MangMT/static/media/icons.faff9214.woff"
   },
   {
-    "revision": "3ae3823641ebdd5485a8",
-    "url": "/MangMT/static/js/main.3ae38236.chunk.js"
+    "revision": "dbe37077bb23fd36bbb1",
+    "url": "/MangMT/static/js/main.dbe37077.chunk.js"
   },
   {
     "revision": "a046592bac8f2fd96e994733faf3858c",
@@ -92,11 +92,11 @@ self.__precacheManifest = [
     "url": "/MangMT/static/media/hamming-code-example.50d928f8.jpg"
   },
   {
-    "revision": "7bc0317473c6c5f86071",
-    "url": "/MangMT/static/css/1.7167639c.chunk.css"
+    "revision": "27937e9bbbcbb1ad8ea7",
+    "url": "/MangMT/static/css/1.44526cdd.chunk.css"
   },
   {
-    "revision": "e4aacd0a446e4b0909d09a3fe0154648",
+    "revision": "e092398a4d10918d2ad4887dde1941e7",
     "url": "/MangMT/index.html"
   }
 ];
