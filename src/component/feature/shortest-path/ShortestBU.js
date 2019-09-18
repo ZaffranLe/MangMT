@@ -332,6 +332,7 @@ class ShortestPath extends Component {
         for (let i = 0; i < nodes.length - 1; i++) {
             let source = nodes[i];
             let target = nodes[i + 1];
+            console.log(source, target);
             for (let link of data.links) {
                 if (
                     (link.source === source && link.target === target) ||
@@ -341,6 +342,7 @@ class ShortestPath extends Component {
                 }
             }
         }
+        console.log(data.links);
         this.forceUpdate();
     };
 
@@ -371,7 +373,9 @@ class ShortestPath extends Component {
                                             {row.map((cell, cellIndex) => {
                                                 return (
                                                     <Table.Cell key={cellIndex}>
-                                                        {cell.value !== Infinity ? (
+                                                        {isFinite(
+                                                            cell.value
+                                                        ) ? (
                                                             <>
                                                                 ({cell.value},
                                                                 {cell.lastNode}){" "}
@@ -380,10 +384,10 @@ class ShortestPath extends Component {
                                                                         color="green"
                                                                         name="checkmark"
                                                                     />
-                                                                )}{" "}
+                                                                )}
                                                             </>
                                                         ) : (
-                                                            "Ꝏ"
+                                                            "∞"
                                                         )}
                                                     </Table.Cell>
                                                 );
@@ -508,13 +512,16 @@ class ShortestPath extends Component {
     };
 
     handleChangeTextArea = (e, dataTA) => {
+        console.log(dataTA.value);
         // eslint-disable-next-line
         if (dataTA.value == "") {
             data.links = [];
         } else if (dataTA.value[dataTA.value.length - 1] === "\n") {
-            let textArea = dataTA.value.toUpperCase()
+            console.log(dataTA.value);
+            let textArea = dataTA.value
                 .slice(0, dataTA.value.length - 1)
                 .split("\n");
+            console.log(textArea);
             data.links = [];
             for (let linkText of textArea) {
                 linkText = linkText.split(" ");
@@ -530,10 +537,7 @@ class ShortestPath extends Component {
                 data.links.push(link1);
                 data.links.push(link2);
             }
-            this.setState({
-                dijkstraResult: [],
-                bellmanFordResult: []
-            })
+            console.log(data.links);
         }
         this.forceUpdate();
     };
