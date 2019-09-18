@@ -1,7 +1,11 @@
-export default function crcCalculate(word, G) {
+export default function crcCalculate(input, type, G) {
     let D = "";
-    for (let char of word) {
-        D += "0" + char.charCodeAt(0).toString(2);
+    if (type === "bin") {
+        D = input;
+    } else {
+        for (let char of input) {
+            D += "0" + char.charCodeAt(0).toString(2);
+        }
     }
     let r = G.length - 1;
     for (let i = 0; i < r; i++) {
