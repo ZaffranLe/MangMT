@@ -1,7 +1,7 @@
 {
   "main.css": "/MangMT/static/css/main.8f14b3c4.chunk.css",
-  "main.js": "/MangMT/static/js/main.78b2bec2.chunk.js",
-  "main.js.map": "/MangMT/static/js/main.78b2bec2.chunk.js.map",
+  "main.js": "/MangMT/static/js/main.ad566091.chunk.js",
+  "main.js.map": "/MangMT/static/js/main.ad566091.chunk.js.map",
   "static/css/1.ceb4e05d.chunk.css": "/MangMT/static/css/1.ceb4e05d.chunk.css",
   "static/js/1.f212f60c.chunk.js": "/MangMT/static/js/1.f212f60c.chunk.js",
   "static/js/1.f212f60c.chunk.js.map": "/MangMT/static/js/1.f212f60c.chunk.js.map",
@@ -14,6 +14,6 @@
   "static/css/main.8f14b3c4.chunk.css.map": "/MangMT/static/css/main.8f14b3c4.chunk.css.map",
   "static/css/1.ceb4e05d.chunk.css.map": "/MangMT/static/css/1.ceb4e05d.chunk.css.map",
   "index.html": "/MangMT/index.html",
-  "precache-manifest.f7059dc175a9b44226b07b39fc0edca6.js": "/MangMT/precache-manifest.f7059dc175a9b44226b07b39fc0edca6.js",
+  "precache-manifest.67122e421bb4dc9f8507edabe4aa27e9.js": "/MangMT/precache-manifest.67122e421bb4dc9f8507edabe4aa27e9.js",
   "service-worker.js": "/MangMT/service-worker.js"
 }

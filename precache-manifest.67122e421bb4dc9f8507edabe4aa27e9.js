@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/MangMT/static/media/brand-icons.e8c322de.woff2"
   },
   {
-    "revision": "78b2bec2d65d610908e1",
+    "revision": "ad5660910e75e78573fe",
     "url": "/MangMT/static/css/main.8f14b3c4.chunk.css"
   },
   {
@@ -48,8 +48,8 @@ self.__precacheManifest = [
     "url": "/MangMT/static/media/icons.faff9214.woff"
   },
   {
-    "revision": "78b2bec2d65d610908e1",
-    "url": "/MangMT/static/js/main.78b2bec2.chunk.js"
+    "revision": "ad5660910e75e78573fe",
+    "url": "/MangMT/static/js/main.ad566091.chunk.js"
   },
   {
     "revision": "a046592bac8f2fd96e994733faf3858c",
@@ -96,7 +96,7 @@ self.__precacheManifest = [
     "url": "/MangMT/static/css/1.ceb4e05d.chunk.css"
   },
   {
-    "revision": "22ce850d5dd1e5a9c51b21c4cee3bbb5",
+    "revision": "a90bf02c9839abc7a4e448bbbd269761",
     "url": "/MangMT/index.html"
   }
 ];
