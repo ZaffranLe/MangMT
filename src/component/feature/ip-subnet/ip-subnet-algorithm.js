@@ -32,23 +32,26 @@ function decimalToHexa(num) {
 
 export default function ipSubnet(ip, subnet = "") {
     const result = {};
+    const data = {};
     let ipv4Reg = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/;
     if (!ipv4Reg.test(ip)) {
-        result["notIP"] = {};
-        result["notIP"]["name"] = "Wrong IP Address";
-        result["notIP"]["value"] = "This isn't a valid IPv4 Address.";
+        data["notIP"] = {};
+        data["notIP"]["name"] = "Wrong IP Address";
+        data["notIP"]["value"] = "This isn't a valid IPv4 Address.";
+        result["data"] = data;
         return result;
     }
     if (subnet === "") {
-        result["forgotSubnet"] = {};
-        result["forgotSubnet"]["name"] = "Missing Subnet mask";
-        result["forgotSubnet"]["value"] =
+        data["forgotSubnet"] = {};
+        data["forgotSubnet"]["name"] = "Missing Subnet mask";
+        data["forgotSubnet"]["value"] =
             "You have to choose a subnet mask first.";
+        result["data"] = data;
         return result;
     }
-    result["ipAddr"] = {};
-    result["ipAddr"]["name"] = "IP Address";
-    result["ipAddr"]["value"] = ip;
+    data["ipAddr"] = {};
+    data["ipAddr"]["name"] = "IP Address";
+    data["ipAddr"]["value"] = ip;
     let ipBinary = _.clone(
         ip
             .split(".")
@@ -76,16 +79,16 @@ export default function ipSubnet(ip, subnet = "") {
     networkAddr = networkAddr.map(binary => {
         return binToDecimal(binary);
     });
-    result["networkAddr"] = {};
-    result["networkAddr"]["value"] = _.clone(networkAddr.join("."));
-    result["networkAddr"]["name"] = "Network Address";
+    data["networkAddr"] = {};
+    data["networkAddr"]["value"] = _.clone(networkAddr.join("."));
+    data["networkAddr"]["name"] = "Network Address";
 
     let start = _.clone(networkAddr);
     start[start.length - 1] = start[start.length - 1] + 1;
 
-    result["range"] = {};
-    result["range"]["value"] = start.join(".") + " - ";
-    result["range"]["name"] = "Usable Host IP Range";
+    data["range"] = {};
+    data["range"]["value"] = start.join(".") + " - ";
+    data["range"]["name"] = "Usable Host IP Range";
     let jumpIndex = -1;
     switch (subnet["type"]) {
         case "Other":
@@ -109,24 +112,24 @@ export default function ipSubnet(ip, subnet = "") {
         networkAddr[i] = 255;
     }
     let broadcast = _.clone(networkAddr);
-    result["broadcastAddr"] = {};
-    result["broadcastAddr"]["name"] = "Broadcast Address";
-    result["broadcastAddr"]["value"] = broadcast.join(".");
+    data["broadcastAddr"] = {};
+    data["broadcastAddr"]["name"] = "Broadcast Address";
+    data["broadcastAddr"]["value"] = broadcast.join(".");
     let end = _.clone(networkAddr);
     end[end.length - 1] = end[end.length - 1] - 1;
-    result["range"]["value"] += end.join(".");
-    let totalNumOfHosts = (jump + 1) * Math.pow(256, 3 - jumpIndex);
-    result["totalNumOfHosts"] = {};
-    result["totalNumOfHosts"]["value"] = totalNumOfHosts;
-    result["totalNumOfHosts"]["name"] = "Total Number of Hosts";
+    data["range"]["value"] += end.join(".");
+    let totalNumOfHosts = Math.pow(2, 32 - parseInt(subnet["cidr"], 10));
+    data["totalNumOfHosts"] = {};
+    data["totalNumOfHosts"]["value"] = totalNumOfHosts.toLocaleString();
+    data["totalNumOfHosts"]["name"] = "Total Number of Hosts";
 
-    result["numOfUsableHosts"] = {};
-    result["numOfUsableHosts"]["value"] = totalNumOfHosts - 2;
-    result["numOfUsableHosts"]["name"] = "Number of Usable Hosts";
+    data["numOfUsableHosts"] = {};
+    data["numOfUsableHosts"]["value"] = (totalNumOfHosts - 2).toLocaleString();
+    data["numOfUsableHosts"]["name"] = "Number of Usable Hosts";
 
-    result["subnet"] = {};
-    result["subnet"]["name"] = "Subnet Mask";
-    result["subnet"]["value"] = subnet["ip"];
+    data["subnet"] = {};
+    data["subnet"]["name"] = "Subnet Mask";
+    data["subnet"]["value"] = subnet["ip"];
     let wildcardAddr = _.clone(
         subnet["ip"]
             .split(".")
@@ -135,65 +138,69 @@ export default function ipSubnet(ip, subnet = "") {
             })
             .join(".")
     );
-    result["wildcardAddr"] = {};
-    result["wildcardAddr"]["name"] = "Wildcard Address";
-    result["wildcardAddr"]["value"] = wildcardAddr;
+    data["wildcardAddr"] = {};
+    data["wildcardAddr"]["name"] = "Wildcard Address";
+    data["wildcardAddr"]["value"] = wildcardAddr;
 
-    result["binSubnetMask"] = {};
-    result["binSubnetMask"]["name"] = "Binary Subnet Mask";
-    result["binSubnetMask"]["value"] = subnet["ip"]
+    data["binSubnetMask"] = {};
+    data["binSubnetMask"]["name"] = "Binary Subnet Mask";
+    data["binSubnetMask"]["value"] = subnet["ip"]
         .split(".")
         .map(octet => {
             return decimalToBinary(octet);
         })
         .join(".");
 
-    result["cidr"] = {};
-    result["cidr"]["name"] = "CIDR Notation";
-    result["cidr"]["value"] = subnet["cidr"];
+    data["subnetClass"] = {};
+    data["subnetClass"]["name"] = "Subnet Mask Class";
+    data["subnetClass"]["value"] = subnet["type"];
 
-    result["ipType"] = {};
-    result["ipType"]["name"] = "IP Type";
+    data["cidr"] = {};
+    data["cidr"]["name"] = "CIDR Notation";
+    data["cidr"]["value"] = "/" + subnet["cidr"];
+
+    data["ipType"] = {};
+    data["ipType"]["name"] = "IP Type";
     let ipOctets = ip.split(".");
-    result["ipType"]["value"] =
+    data["ipType"]["value"] =
         ipOctets[0] == 10 ||
         (ipOctets[0] == 172 && ipOctets[1] >= 16 && ipOctets[1] <= 31) ||
         (ipOctets[0] == 192 && ipOctets[1] == 168)
             ? "Private"
             : "Public";
 
-    result["short"] = {};
-    result["short"]["name"] = "Short";
-    result["short"]["value"] = ip + " " + subnet["cidr"];
+    data["short"] = {};
+    data["short"]["name"] = "Short";
+    data["short"]["value"] = ip + " " + subnet["cidr"];
 
-    result["binaryId"] = {};
-    result["binaryId"]["name"] = "Binary ID";
-    result["binaryId"]["value"] = ip
+    data["binaryId"] = {};
+    data["binaryId"]["name"] = "Binary ID";
+    data["binaryId"]["value"] = ip
         .split(".")
         .map(octet => {
             return decimalToBinary(octet);
         })
         .join("");
 
-    result["intId"] = {};
-    result["intId"]["name"] = "Integer ID";
-    result["intId"]["value"] = binToDecimal(result["binaryId"]["value"]);
+    data["intId"] = {};
+    data["intId"]["name"] = "Integer ID";
+    data["intId"]["value"] = binToDecimal(data["binaryId"]["value"]);
 
-    result["hexaId"] = {};
-    result["hexaId"]["name"] = "Hex ID";
-    result["hexaId"]["value"] = "0x" + binToHexa(result["binaryId"]["value"]);
+    data["hexaId"] = {};
+    data["hexaId"]["name"] = "Hex ID";
+    data["hexaId"]["value"] = "0x" + binToHexa(data["binaryId"]["value"]);
 
-    result["arpa"] = {};
-    result["arpa"]["name"] = "in-addr.arpa";
-    result["arpa"]["value"] =
+    data["arpa"] = {};
+    data["arpa"]["name"] = "in-addr.arpa";
+    data["arpa"]["value"] =
         ip
             .split(".")
             .reverse()
             .join(".") + ".in-addr.arpa";
 
-    result["ipv4MappedAddr"] = {};
-    result["ipv4MappedAddr"]["name"] = "IPv4 Mapped Address";
-    result["ipv4MappedAddr"]["value"] =
+    data["ipv4MappedAddr"] = {};
+    data["ipv4MappedAddr"]["name"] = "IPv4 Mapped Address";
+    data["ipv4MappedAddr"]["value"] =
         "::ffff:" +
         decimalToHexa(ipOctets[0]) +
         decimalToHexa(ipOctets[1]) +
@@ -201,9 +208,9 @@ export default function ipSubnet(ip, subnet = "") {
         decimalToHexa(ipOctets[2]) +
         decimalToHexa(ipOctets[3]);
 
-    result["6to4Prefix"] = {};
-    result["6to4Prefix"]["name"] = "6to4 Prefix";
-    result["6to4Prefix"]["value"] =
+    data["6to4Prefix"] = {};
+    data["6to4Prefix"]["name"] = "6to4 Prefix";
+    data["6to4Prefix"]["value"] =
         "2002:" +
         decimalToHexa(ipOctets[0]) +
         decimalToHexa(ipOctets[1]) +
@@ -212,5 +219,36 @@ export default function ipSubnet(ip, subnet = "") {
         decimalToHexa(ipOctets[3]) +
         "::/48";
 
+    result["data"] = data;
+
+    let networks = [];
+    while (networks.length < 256 / (jump + 1) && jump !== 255) {
+        let network = {};
+        let posNetAddr = _.clone(ipOctets);
+        posNetAddr[jumpIndex] = (jump + 1) * networks.length;
+        for (let i = jumpIndex + 1; i < posNetAddr.length; i++) {
+            posNetAddr[i] = 0;
+        }
+        network["addr"] = posNetAddr.join(".");
+        let start = _.clone(posNetAddr);
+        start[start.length - 1] = start[start.length - 1] + 1;
+        network["range"] = start.join(".") + " - ";
+        posNetAddr[jumpIndex] = posNetAddr[jumpIndex] + jump;
+        for (let i = jumpIndex + 1; i < posNetAddr.length; i++) {
+            posNetAddr[i] = 255;
+        }
+        network["broadcast"] = posNetAddr.join(".");
+        let end = _.clone(posNetAddr);
+        end[end.length - 1] = end[end.length - 1] - 1;
+        network["range"] += end.join(".");
+        networks.push(network);
+    }
+    result["networks"] = {};
+    for (let i = jumpIndex; i < ipOctets.length; i++) {
+        ipOctets[i] = "*";
+    }
+    result["networks"]["ip"] = ipOctets.join(".");
+    result["networks"]["cidr"] = "/" + subnet["cidr"];
+    result["networks"]["networks"] = networks;
     return result;
 }

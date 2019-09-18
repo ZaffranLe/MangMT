@@ -17,7 +17,7 @@ const subnetOptions = subnets.map((subnet, idx) => {
     obj["ip"] = subnet["ip"];
     obj["cidr"] = subnet["cidr"];
     obj["type"] = subnet["type"];
-    obj["text"] = subnet["ip"] + " " + subnet["cidr"];
+    obj["text"] = subnet["ip"] + " /" + subnet["cidr"];
     obj["key"] = idx;
     obj["value"] = subnet;
     return obj;
@@ -103,24 +103,110 @@ class IPSubnet extends Component {
                                         </Message.Header>
                                     </Message>
                                 ) : (
-                                    <Table>
-                                        <Table.Body>
-                                            {Object.keys(result).map(
-                                                item => {
+                                    <>
+                                        <Header>Result</Header>
+                                        <Table>
+                                            <Table.Body>
+                                                {Object.keys(
+                                                    result["data"]
+                                                ).map(item => {
                                                     return (
                                                         <Table.Row key={item}>
                                                             <Table.Cell>
-                                                                {result[item]["name"]}
+                                                                {
+                                                                    result[
+                                                                        "data"
+                                                                    ][item][
+                                                                        "name"
+                                                                    ]
+                                                                }
                                                             </Table.Cell>
                                                             <Table.Cell>
-                                                                {result[item]["value"]}
+                                                                {
+                                                                    result[
+                                                                        "data"
+                                                                    ][item][
+                                                                        "value"
+                                                                    ]
+                                                                }
                                                             </Table.Cell>
                                                         </Table.Row>
                                                     );
-                                                }
-                                            )}
-                                        </Table.Body>
-                                    </Table>
+                                                })}
+                                            </Table.Body>
+                                        </Table>
+                                        {result["networks"]["networks"].length >
+                                            0 && (
+                                            <>
+                                                <Header>
+                                                    All{" "}
+                                                    {
+                                                        result["networks"][
+                                                            "networks"
+                                                        ].length
+                                                    }{" "}
+                                                    of the Possible{" "}
+                                                    {result["networks"]["cidr"]}{" "}
+                                                    Networks for{" "}
+                                                    {result["networks"]["ip"]}
+                                                </Header>
+                                                <Table>
+                                                    <Table.Header>
+                                                        <Table.Row>
+                                                            <Table.HeaderCell>
+                                                                Network Address
+                                                            </Table.HeaderCell>
+                                                            <Table.HeaderCell>
+                                                                Usable Host
+                                                                Range
+                                                            </Table.HeaderCell>
+                                                            <Table.HeaderCell>
+                                                                Broadcast
+                                                                Address
+                                                            </Table.HeaderCell>
+                                                        </Table.Row>
+                                                    </Table.Header>
+                                                    <Table.Body>
+                                                        {result["networks"][
+                                                            "networks"
+                                                        ].map(
+                                                            (network, idx) => {
+                                                                return (
+                                                                    <Table.Row
+                                                                        key={
+                                                                            idx
+                                                                        }
+                                                                    >
+                                                                        <Table.Cell>
+                                                                            {
+                                                                                network[
+                                                                                    "addr"
+                                                                                ]
+                                                                            }
+                                                                        </Table.Cell>
+                                                                        <Table.Cell>
+                                                                            {
+                                                                                network[
+                                                                                    "range"
+                                                                                ]
+                                                                            }
+                                                                        </Table.Cell>
+                                                                        <Table.Cell>
+                                                                            {
+                                                                                network[
+                                                                                    "broadcast"
+                                                                                ]
+                                                                            }
+                                                                        </Table.Cell>
+                                                                    </Table.Row>
+                                                                );
+                                                            }
+                                                        )}
+                                                    </Table.Body>
+                                                </Table>
+                                            </>
+                                        )}
+                                    </>
                                 )}
                             </Segment>
                         </Grid.Column>

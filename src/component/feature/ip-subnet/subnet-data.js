@@ -2,162 +2,162 @@ const subnets = [
     {
         ip: "128.0.0.0",
         type: "Other",
-        cidr: "/1"
+        cidr: "1"
     },
     {
         ip: "192.0.0.0",
         type: "Other",
-        cidr: "/2"
+        cidr: "2"
     },
     {
         ip: "224.0.0.0",
         type: "Other",
-        cidr: "/3"
+        cidr: "3"
     },
     {
         ip: "240.0.0.0",
         type: "Other",
-        cidr: "/4"
+        cidr: "4"
     },
     {
         ip: "248.0.0.0",
         type: "Other",
-        cidr: "/5"
+        cidr: "5"
     },
     {
         ip: "252.0.0.0",
         type: "Other",
-        cidr: "/6"
+        cidr: "6"
     },
     {
         ip: "254.0.0.0",
         type: "Other",
-        cidr: "/7"
+        cidr: "7"
     },
     {
         ip: "255.0.0.0",
         type: "A",
-        cidr: "/8"
+        cidr: "8"
     },
     {
         ip: "255.128.0.0",
         type: "A",
-        cidr: "/9"
+        cidr: "9"
     },
     {
         ip: "255.192.0.0",
         type: "A",
-        cidr: "/10"
+        cidr: "10"
     },
     {
         ip: "255.224.0.0",
         type: "A",
-        cidr: "/11"
+        cidr: "11"
     },
     {
         ip: "255.240.0.0",
         type: "A",
-        cidr: "/12"
+        cidr: "12"
     },
     {
         ip: "255.248.0.0",
         type: "A",
-        cidr: "/13"
+        cidr: "13"
     },
     {
         ip: "255.252.0.0",
         type: "A",
-        cidr: "/14"
+        cidr: "14"
     },
     {
         ip: "255.254.0.0",
         type: "A",
-        cidr: "/15"
+        cidr: "15"
     },
     {
         ip: "255.255.0.0",
         type: "B",
-        cidr: "/16"
+        cidr: "16"
     },
     {
         ip: "255.255.128.0",
         type: "B",
-        cidr: "/17"
+        cidr: "17"
     },
     {
         ip: "255.255.192.0",
         type: "B",
-        cidr: "/18"
+        cidr: "18"
     },
     {
         ip: "255.255.224.0",
         type: "B",
-        cidr: "/19"
+        cidr: "19"
     },
     {
         ip: "255.255.240.0",
         type: "B",
-        cidr: "/20"
+        cidr: "20"
     },
     {
         ip: "255.255.248.0",
         type: "B",
-        cidr: "/21"
+        cidr: "21"
     },
     {
         ip: "255.255.252.0",
         type: "B",
-        cidr: "/22"
+        cidr: "22"
     },
     {
         ip: "255.255.254.0",
         type: "B",
-        cidr: "/23"
+        cidr: "23"
     },
     {
         ip: "255.255.255.0",
         type: "C",
-        cidr: "/24"
+        cidr: "24"
     },
     {
         ip: "255.255.255.128",
         type: "C",
-        cidr: "/25"
+        cidr: "25"
     },
     {
         ip: "255.255.255.192",
         type: "C",
-        cidr: "/26"
+        cidr: "26"
     },
     {
         ip: "255.255.255.224",
         type: "C",
-        cidr: "/27"
+        cidr: "27"
     },
     {
         ip: "255.255.255.240",
         type: "C",
-        cidr: "/28"
+        cidr: "28"
     },
     {
         ip: "255.255.255.248",
         type: "C",
-        cidr: "/29"
+        cidr: "29"
     },
     {
         ip: "255.255.255.252",
         type: "C",
-        cidr: "/30"
+        cidr: "30"
     },
     {
         ip: "255.255.255.254",
         type: "C",
-        cidr: "/31"
+        cidr: "31"
     },
     {
         ip: "255.255.255.255",
         type: "C",
-        cidr: "/32"
+        cidr: "32"
     }
 ];
 
