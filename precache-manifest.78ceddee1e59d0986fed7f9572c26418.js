@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "e8c322de9658cbeb8a774b6624167c2c",
-    "url": "/MangMT/static/media/brand-icons.e8c322de.woff2"
+    "revision": "faff92145777a3cbaf8e7367b4807987",
+    "url": "/MangMT/static/media/icons.faff9214.woff"
   },
   {
-    "revision": "ad5660910e75e78573fe",
-    "url": "/MangMT/static/css/main.8f14b3c4.chunk.css"
+    "revision": "1217036fe8ed9f2fb089",
+    "url": "/MangMT/static/css/main.57db698b.chunk.css"
   },
   {
     "revision": "680335b0f208d4a7b258c9f0e5ca57f5",
     "url": "/MangMT/static/media/crc-example.680335b0.png"
   },
   {
-    "revision": "f212f60cb49af5918c48",
-    "url": "/MangMT/static/js/1.f212f60c.chunk.js"
+    "revision": "3c598f5f886ab1e0dfad",
+    "url": "/MangMT/static/js/1.3c598f5f.chunk.js"
   },
   {
     "revision": "21e4fbeaa5c92dbc4584",
@@ -44,36 +44,36 @@ self.__precacheManifest = [
     "url": "/MangMT/static/media/icons.0ab54153.woff2"
   },
   {
-    "revision": "faff92145777a3cbaf8e7367b4807987",
-    "url": "/MangMT/static/media/icons.faff9214.woff"
+    "revision": "1217036fe8ed9f2fb089",
+    "url": "/MangMT/static/js/main.1217036f.chunk.js"
   },
   {
-    "revision": "ad5660910e75e78573fe",
-    "url": "/MangMT/static/js/main.ad566091.chunk.js"
+    "revision": "e8c322de9658cbeb8a774b6624167c2c",
+    "url": "/MangMT/static/media/brand-icons.e8c322de.woff2"
   },
   {
     "revision": "a046592bac8f2fd96e994733faf3858c",
     "url": "/MangMT/static/media/brand-icons.a046592b.woff"
   },
   {
-    "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
-    "url": "/MangMT/static/media/icons.8e3c7f55.eot"
-  },
-  {
     "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
     "url": "/MangMT/static/media/icons.b87b9ba5.ttf"
+  },
+  {
+    "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
+    "url": "/MangMT/static/media/icons.8e3c7f55.eot"
   },
   {
     "revision": "13db00b7a34fee4d819ab7f9838cc428",
     "url": "/MangMT/static/media/brand-icons.13db00b7.eot"
   },
   {
-    "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
-    "url": "/MangMT/static/media/brand-icons.c5ebe0b3.ttf"
-  },
-  {
     "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
     "url": "/MangMT/static/media/outline-icons.82f60bd0.svg"
+  },
+  {
+    "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
+    "url": "/MangMT/static/media/brand-icons.c5ebe0b3.ttf"
   },
   {
     "revision": "962a1bf31c081691065fe333d9fa8105",
@@ -84,19 +84,11 @@ self.__precacheManifest = [
     "url": "/MangMT/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "979d92c88663edcf114d8ab113b9047d",
-    "url": "/MangMT/static/media/udp-checksum-example.979d92c8.png"
-  },
-  {
-    "revision": "50d928f8bcf726b30e7b1650cb905dbd",
-    "url": "/MangMT/static/media/hamming-code-example.50d928f8.jpg"
-  },
-  {
-    "revision": "f212f60cb49af5918c48",
+    "revision": "3c598f5f886ab1e0dfad",
     "url": "/MangMT/static/css/1.ceb4e05d.chunk.css"
   },
   {
-    "revision": "a90bf02c9839abc7a4e448bbbd269761",
+    "revision": "d069f47c3fa68e7bf6da22d0c9466d40",
     "url": "/MangMT/index.html"
   }
 ];
