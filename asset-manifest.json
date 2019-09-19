@@ -1,7 +1,7 @@
 {
   "main.css": "/MangMT/static/css/main.57db698b.chunk.css",
-  "main.js": "/MangMT/static/js/main.1217036f.chunk.js",
-  "main.js.map": "/MangMT/static/js/main.1217036f.chunk.js.map",
+  "main.js": "/MangMT/static/js/main.f4b1a79c.chunk.js",
+  "main.js.map": "/MangMT/static/js/main.f4b1a79c.chunk.js.map",
   "static/css/1.ceb4e05d.chunk.css": "/MangMT/static/css/1.ceb4e05d.chunk.css",
   "static/js/1.3c598f5f.chunk.js": "/MangMT/static/js/1.3c598f5f.chunk.js",
   "static/js/1.3c598f5f.chunk.js.map": "/MangMT/static/js/1.3c598f5f.chunk.js.map",
@@ -9,9 +9,9 @@
   "runtime~main.js.map": "/MangMT/static/js/runtime~main.21e4fbea.js.map",
   "static/media/semantic.min.css": "/MangMT/static/media/outline-icons.cd6c777f.woff2",
   "static/media/crc-example.png": "/MangMT/static/media/crc-example.680335b0.png",
-  "static/css/1.ceb4e05d.chunk.css.map": "/MangMT/static/css/1.ceb4e05d.chunk.css.map",
   "static/css/main.57db698b.chunk.css.map": "/MangMT/static/css/main.57db698b.chunk.css.map",
+  "static/css/1.ceb4e05d.chunk.css.map": "/MangMT/static/css/1.ceb4e05d.chunk.css.map",
   "index.html": "/MangMT/index.html",
-  "precache-manifest.78ceddee1e59d0986fed7f9572c26418.js": "/MangMT/precache-manifest.78ceddee1e59d0986fed7f9572c26418.js",
+  "precache-manifest.a62441794aa87d2b8015c08a51ec159c.js": "/MangMT/precache-manifest.a62441794aa87d2b8015c08a51ec159c.js",
   "service-worker.js": "/MangMT/service-worker.js"
 }
