@@ -12,7 +12,9 @@ import {
   Divider,
   Dropdown,
   Select,
-  Statistic
+  Statistic,
+  Table,
+  Icon
 } from "semantic-ui-react";
 import udpChecksum from "./udp-checksum-algorithm";
 import { hammingCode, fixHammingCode } from "./hamming-algorithm";
@@ -158,6 +160,11 @@ class BinaryAlgorithms extends Component {
     });
   };
 
+  renderFixHammingTBodyRow = (p, length) => {
+    let binaries = [];
+    for (let i = 0; i < length; i++) {}
+  };
+
   render() {
     const { img, imgModal, udpChecksum, hammingCode, crc } = this.state;
     let udpSteps = [];
@@ -178,7 +185,7 @@ class BinaryAlgorithms extends Component {
         <Segment>
           <Grid>
             <Grid.Row>
-              <Grid.Column width={8}>
+              <Grid.Column width={16}>
                 <Grid.Row>
                   <Grid.Column width={16}>
                     <Segment color="black">
@@ -189,7 +196,7 @@ class BinaryAlgorithms extends Component {
                         <Grid.Row>
                           <Grid.Column width={16}>
                             <Grid.Row>
-                              <Grid.Column width={16}>
+                              <Grid.Column width={8}>
                                 <Form>
                                   <Form.Field>
                                     <Input
@@ -232,7 +239,11 @@ class BinaryAlgorithms extends Component {
                             <Divider />
                             {Boolean(udpChecksum.result["steps"]) && (
                               <Segment>
-                                <Select defaultValue={0} options={udpSteps} onChange={this.selectUdpStep} />
+                                <Select
+                                  defaultValue={0}
+                                  options={udpSteps}
+                                  onChange={this.selectUdpStep}
+                                />
                               </Segment>
                             )}
                             {Boolean(udpChecksum.result["steps"]) && (
@@ -284,7 +295,9 @@ class BinaryAlgorithms extends Component {
                   </Grid.Column>
                 </Grid.Row>
               </Grid.Column>
-              <Grid.Column width={8}>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column width={16}>
                 <Grid.Row>
                   <Grid.Column width={16}>
                     <Segment color="black">
@@ -293,7 +306,7 @@ class BinaryAlgorithms extends Component {
                     <Segment>
                       <Grid>
                         <Grid.Row>
-                          <Grid.Column width={6}>
+                          <Grid.Column width={16}>
                             <Form>
                               <Form.Field>
                                 <Input
@@ -333,20 +346,58 @@ class BinaryAlgorithms extends Component {
                                   label="Result"
                                   data-name="result"
                                   data-algorithm="hammingCode"
-                                  value={hammingCode.result}
+                                  value={hammingCode.result["hammingCode"]}
                                   fluid
                                   size="large"
                                 />
                               </Form.Field>
                             </Form>
                           </Grid.Column>
-                          <Grid.Column width={10}>
-                            <Image
-                              src={hammingCodeExample}
-                              bordered
-                              fluid
-                              onClick={() => this.handleZoomImage(hammingCodeExample)}
-                            />
+                        </Grid.Row>
+                        <Grid.Row>
+                          <Grid.Column width={16}>
+                            {Boolean(hammingCode.result["pList"]) && (
+                                <Table celled>
+                                  <Table.Header>
+                                    <Table.Row>
+                                      <Table.HeaderCell>Bit position</Table.HeaderCell>
+                                      {hammingCode.result["hammingCode"]
+                                        .split("")
+                                        .map((bit, index) => {
+                                          return (
+                                            <Table.HeaderCell key={index}>
+                                              {index + 1}
+                                            </Table.HeaderCell>
+                                          );
+                                        })}
+                                    </Table.Row>
+                                    <Table.Row>
+                                      <Table.HeaderCell>Encoded data bits</Table.HeaderCell>
+                                      {hammingCode.result["hammingCode"].split("").map(bit => {
+                                        return <Table.HeaderCell>{bit}</Table.HeaderCell>;
+                                      })}
+                                    </Table.Row>
+                                  </Table.Header>
+                                  <Table.Body>
+                                    {Boolean(hammingCode.result["pList"]) && (
+                                      <>
+                                        {hammingCode.result["pList"].map((p, idx) => {
+                                          return (
+                                            <Table.Row key={idx}>
+                                              <Table.Cell>
+                                                P{p["indexes"][0] + 1}
+                                              </Table.Cell>
+                                              {p["binaries"].map((bit, bitIdx) => {
+                                                return <Table.Cell key={bitIdx}>{bit}</Table.Cell>;
+                                              })}
+                                            </Table.Row>
+                                          );
+                                        })}
+                                      </>
+                                    )}
+                                  </Table.Body>
+                                </Table>
+                            )}
                           </Grid.Column>
                         </Grid.Row>
                         <Divider />
@@ -407,6 +458,59 @@ class BinaryAlgorithms extends Component {
                                 />
                               </Form.Field>
                             </Form>
+                          </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row>
+                          <Grid.Column width={16}>
+                            {Boolean(hammingCode.resultFix) && (
+                              <Table celled>
+                                <Table.Header>
+                                  <Table.Row>
+                                    <Table.HeaderCell>Bit position</Table.HeaderCell>
+                                    {hammingCode.resultFix["hammingCode"]
+                                      .split("")
+                                      .map((bit, index) => {
+                                        return (
+                                          <Table.HeaderCell key={index}>
+                                            {index + 1}
+                                          </Table.HeaderCell>
+                                        );
+                                      })}
+                                  </Table.Row>
+                                  <Table.Row>
+                                    <Table.HeaderCell>Encoded data bits</Table.HeaderCell>
+                                    {hammingCode.resultFix["hammingCode"].split("").map(bit => {
+                                      return <Table.HeaderCell>{bit}</Table.HeaderCell>;
+                                    })}
+                                  </Table.Row>
+                                </Table.Header>
+                                <Table.Body>
+                                  {Boolean(hammingCode.resultFix["pList"]) && (
+                                    <>
+                                      {hammingCode.resultFix["pList"].map((p, idx) => {
+                                        return (
+                                          <Table.Row key={idx}>
+                                            <Table.Cell>P{p["parityBit"]["index"] + 1}</Table.Cell>
+                                            {p["binaries"].map((bit, bitIdx) => {
+                                              return <Table.Cell key={bitIdx}>{bit}</Table.Cell>;
+                                            })}
+                                            <Table.Cell>
+                                              {p["parityBit"]["isTrue"] ? "True" : "False"}
+                                              <Icon
+                                                name={
+                                                  p["parityBit"]["isTrue"] ? "checkmark" : "close"
+                                                }
+                                                color={p["parityBit"]["isTrue"] ? "green" : "red"}
+                                              />
+                                            </Table.Cell>
+                                          </Table.Row>
+                                        );
+                                      })}
+                                    </>
+                                  )}
+                                </Table.Body>
+                              </Table>
+                            )}
                           </Grid.Column>
                         </Grid.Row>
                       </Grid>

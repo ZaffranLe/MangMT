@@ -1,3 +1,5 @@
+const _ = require("lodash")
+
 function isExponentOf2(num) {
     return Math.log2(num) === Math.round(Math.log2(num));
 }
@@ -7,14 +9,20 @@ function calculateHammingCode(hammingCode) {
     for (let i = 0; i < hammingCode.length; i++) {
         if (isExponentOf2(i + 1)) {
             let binaries = [];
+            let indexes = [];
             for (let j = i; j < hammingCode.length; j += (i + 1) * 2) {
                 binaries = binaries.concat(
                     hammingCode.slice(j, j < hammingCode.length && i + 1 + j)
                 );
+                let max = j < hammingCode.length ? i + j + 1 : hammingCode.length;
+                for (let k = j; k < max; k++) {
+                    indexes.push(k);
+                }
             }
             let p = {};
             p["binaries"] = binaries.slice(1);
             p["index"] = i;
+            p["indexes"] = indexes;
             pList.push(p);
         }
     }
@@ -25,8 +33,22 @@ function calculateHammingCode(hammingCode) {
         }
         hammingCode[p["index"]] = countBit1 % 2;
     }
-
-    return hammingCode.join("");
+    const result = {};
+    result["hammingCode"] = hammingCode.join("");
+    let pListClone = _.cloneDeep(pList);
+    pListClone.forEach(p => {
+        let binaries = [];
+        for (let i = 0; i < hammingCode.length; i++) {
+            if (p["indexes"].indexOf(i) === -1) {
+                binaries.push("");
+            } else {
+                binaries.push(hammingCode[i]);
+            }
+        }
+        p["binaries"] = binaries;
+    });
+    result["pList"] = pListClone;
+    return result;
 }
 
 export function hammingCode(input, type) {
@@ -136,5 +158,23 @@ export function fixHammingCode(hammingCode) {
     result["char"] = String.fromCharCode(
         parseInt(originalBinaries, 2).toString(10)
     );
+
+    let pListClone = _.cloneDeep(pList);
+    pListClone.forEach(p => {
+        let binaries = [];
+        let indexes = p["binaries"].map(bin => {
+            return bin["index"];
+        });
+        indexes.unshift(p["parityBit"]["index"]);
+        for (let i =0 ;i < hammingCode.length; i++) {
+            if (indexes.indexOf(i) === -1) {
+                binaries.push("");
+            } else {
+                binaries.push(hammingCode[i]);
+            }
+        }
+        p["binaries"] = binaries;
+    })
+    result["pList"] = pListClone;
     return result;
 }
