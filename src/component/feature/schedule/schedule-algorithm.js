@@ -29,7 +29,7 @@ function chooseRandom(max, min = 0) {
 
 function chooseEmployee(empId, listOption, date) {
     let day = date.getDate() - 1;
-    if (day > 0) {
+    if (day >= 0) {
         if (Boolean(schedule[day - 1])) {
             if (
                 schedule[day - 1]["firstShift"] === empId ||
