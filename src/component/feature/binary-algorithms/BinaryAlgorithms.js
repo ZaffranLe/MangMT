@@ -19,7 +19,6 @@ import {
 import udpChecksum from "./udp-checksum-algorithm";
 import { hammingCode, fixHammingCode } from "./hamming-algorithm";
 import crcCalculate from "./crc-algorithm";
-const hammingCodeExample = require("./hamming-code-example.jpg");
 const crcExample = require("./crc-example.png");
 
 const options = [
@@ -57,6 +56,7 @@ class BinaryAlgorithms extends Component {
       udpChecksum: {
         word: "",
         result: "",
+        type: "word",
         stepIdx: 0
       },
       hammingCode: {
@@ -100,7 +100,7 @@ class BinaryAlgorithms extends Component {
   };
 
   calculateUDPChecksum = () => {
-    const result = udpChecksum(this.state.udpChecksum.word);
+    const result = udpChecksum(this.state.udpChecksum.word, this.state.udpChecksum.type);
     this.setState({
       udpChecksum: {
         ...this.state.udpChecksum,
@@ -200,7 +200,15 @@ class BinaryAlgorithms extends Component {
                                 <Form>
                                   <Form.Field>
                                     <Input
-                                      label="Word"
+                                      label={
+                                        <Dropdown
+                                          defaultValue="word"
+                                          algorithm="udpChecksum"
+                                          onChange={this.handleChangeOption}
+                                          options={options}
+                                        />
+                                      }
+                                      labelPosition="left"
                                       data-name="word"
                                       data-algorithm="udpChecksum"
                                       value={udpChecksum.word}
@@ -357,46 +365,44 @@ class BinaryAlgorithms extends Component {
                         <Grid.Row>
                           <Grid.Column width={16}>
                             {Boolean(hammingCode.result["pList"]) && (
-                                <Table celled>
-                                  <Table.Header>
-                                    <Table.Row>
-                                      <Table.HeaderCell>Bit position</Table.HeaderCell>
-                                      {hammingCode.result["hammingCode"]
-                                        .split("")
-                                        .map((bit, index) => {
-                                          return (
-                                            <Table.HeaderCell key={index}>
-                                              {index + 1}
-                                            </Table.HeaderCell>
-                                          );
-                                        })}
-                                    </Table.Row>
-                                    <Table.Row>
-                                      <Table.HeaderCell>Encoded data bits</Table.HeaderCell>
-                                      {hammingCode.result["hammingCode"].split("").map(bit => {
-                                        return <Table.HeaderCell>{bit}</Table.HeaderCell>;
+                              <Table celled>
+                                <Table.Header>
+                                  <Table.Row>
+                                    <Table.HeaderCell>Bit position</Table.HeaderCell>
+                                    {hammingCode.result["hammingCode"]
+                                      .split("")
+                                      .map((bit, index) => {
+                                        return (
+                                          <Table.HeaderCell key={index}>
+                                            {index + 1}
+                                          </Table.HeaderCell>
+                                        );
                                       })}
-                                    </Table.Row>
-                                  </Table.Header>
-                                  <Table.Body>
-                                    {Boolean(hammingCode.result["pList"]) && (
-                                      <>
-                                        {hammingCode.result["pList"].map((p, idx) => {
-                                          return (
-                                            <Table.Row key={idx}>
-                                              <Table.Cell>
-                                                P{p["indexes"][0] + 1}
-                                              </Table.Cell>
-                                              {p["binaries"].map((bit, bitIdx) => {
-                                                return <Table.Cell key={bitIdx}>{bit}</Table.Cell>;
-                                              })}
-                                            </Table.Row>
-                                          );
-                                        })}
-                                      </>
-                                    )}
-                                  </Table.Body>
-                                </Table>
+                                  </Table.Row>
+                                  <Table.Row>
+                                    <Table.HeaderCell>Encoded data bits</Table.HeaderCell>
+                                    {hammingCode.result["hammingCode"].split("").map(bit => {
+                                      return <Table.HeaderCell>{bit}</Table.HeaderCell>;
+                                    })}
+                                  </Table.Row>
+                                </Table.Header>
+                                <Table.Body>
+                                  {Boolean(hammingCode.result["pList"]) && (
+                                    <>
+                                      {hammingCode.result["pList"].map((p, idx) => {
+                                        return (
+                                          <Table.Row key={idx}>
+                                            <Table.Cell>P{p["indexes"][0] + 1}</Table.Cell>
+                                            {p["binaries"].map((bit, bitIdx) => {
+                                              return <Table.Cell key={bitIdx}>{bit}</Table.Cell>;
+                                            })}
+                                          </Table.Row>
+                                        );
+                                      })}
+                                    </>
+                                  )}
+                                </Table.Body>
+                              </Table>
                             )}
                           </Grid.Column>
                         </Grid.Row>
