@@ -160,11 +160,6 @@ class BinaryAlgorithms extends Component {
     });
   };
 
-  renderFixHammingTBodyRow = (p, length) => {
-    let binaries = [];
-    for (let i = 0; i < length; i++) {}
-  };
-
   render() {
     const { img, imgModal, udpChecksum, hammingCode, crc } = this.state;
     let udpSteps = [];
@@ -228,7 +223,7 @@ class BinaryAlgorithms extends Component {
                                       icon="calculator"
                                       fluid
                                       onClick={this.calculateUDPChecksum}
-                                      disabled={!udpChecksum.word}
+                                      disabled={(udpChecksum.type === "word" && !udpChecksum.word) || (udpChecksum.type === "bin" && udpChecksum.word.length <= 16)}
                                     />
                                   </Form.Field>
                                   <Form.Field>
@@ -257,7 +252,7 @@ class BinaryAlgorithms extends Component {
                             {Boolean(udpChecksum.result["steps"]) && (
                               <Segment>
                                 <Statistic.Group horizontal size="small">
-                                  {Boolean(udpChecksum.result["steps"]) && (
+                                  {udpChecksum.result["steps"].length > 0 && (
                                     <>
                                       <Statistic>
                                         <Statistic.Value>
