@@ -12,7 +12,8 @@ import {
     Table,
     TextArea,
     Form,
-    Popup
+    Popup,
+    Message
 } from "semantic-ui-react";
 import { Graph } from "react-d3-graph";
 import { toast } from "react-toastify";
@@ -371,7 +372,8 @@ class ShortestPath extends Component {
                                             {row.map((cell, cellIndex) => {
                                                 return (
                                                     <Table.Cell key={cellIndex}>
-                                                        {cell.value !== Infinity ? (
+                                                        {cell.value !==
+                                                        Infinity ? (
                                                             <>
                                                                 ({cell.value},
                                                                 {cell.lastNode}){" "}
@@ -512,7 +514,8 @@ class ShortestPath extends Component {
         if (dataTA.value == "") {
             data.links = [];
         } else if (dataTA.value[dataTA.value.length - 1] === "\n") {
-            let textArea = dataTA.value.toUpperCase()
+            let textArea = dataTA.value
+                .toUpperCase()
                 .slice(0, dataTA.value.length - 1)
                 .split("\n");
             data.links = [];
@@ -533,7 +536,7 @@ class ShortestPath extends Component {
             this.setState({
                 dijkstraResult: [],
                 bellmanFordResult: []
-            })
+            });
         }
         this.forceUpdate();
     };
@@ -549,7 +552,7 @@ class ShortestPath extends Component {
         } = this.state;
         return (
             <>
-                <Segment>
+                <Segment color="black">
                     <Header>Shortest Path</Header>
                     <NodeModal
                         currentNode={currentNode}
@@ -558,7 +561,7 @@ class ShortestPath extends Component {
                         handleCloseModal={this.handleCloseModal}
                     />
                 </Segment>
-                <Segment>
+                <Segment color="black">
                     <Grid>
                         <Grid.Row>
                             <Grid.Column width={8}>
@@ -592,9 +595,21 @@ class ShortestPath extends Component {
                                                 <Accordion.Content
                                                     active={activeIndex === 1}
                                                 >
-                                                    <Tab
-                                                        panes={dijkstraResult}
-                                                    />
+                                                    {dijkstraResult.length >
+                                                    0 ? (
+                                                        <Tab
+                                                            panes={
+                                                                dijkstraResult
+                                                            }
+                                                        />
+                                                    ) : (
+                                                        <Message warning>
+                                                            <Message.Header>
+                                                                Nothing to
+                                                                display
+                                                            </Message.Header>
+                                                        </Message>
+                                                    )}
                                                 </Accordion.Content>
 
                                                 <Accordion.Title
@@ -613,11 +628,21 @@ class ShortestPath extends Component {
                                                 <Accordion.Content
                                                     active={activeIndex === 2}
                                                 >
-                                                    <Tab
-                                                        panes={
-                                                            bellmanFordResult
-                                                        }
-                                                    />
+                                                    {bellmanFordResult.length >
+                                                    0 ? (
+                                                        <Tab
+                                                            panes={
+                                                                bellmanFordResult
+                                                            }
+                                                        />
+                                                    ) : (
+                                                        <Message warning>
+                                                            <Message.Header>
+                                                                Nothing to
+                                                                display
+                                                            </Message.Header>
+                                                        </Message>
+                                                    )}
                                                 </Accordion.Content>
                                             </Accordion>
                                         </Segment>
@@ -626,7 +651,7 @@ class ShortestPath extends Component {
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
-                    <Segment>
+                    <Segment color="black">
                         <Header>Configuration</Header>
                         <Grid>
                             <Grid.Row>
