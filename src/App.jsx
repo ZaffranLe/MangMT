@@ -11,22 +11,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import Routes from "./routes";
 class App extends Component {
-  state = {
-    dropdownMenuStyle: {
-      display: "none"
-    }
-  };
-
-  handleToggleDropdownMenu = () => {
-    let newState = Object.assign({}, this.state);
-    if (newState.dropdownMenuStyle.display === "none") {
-      newState.dropdownMenuStyle = { display: "flex" };
-    } else {
-      newState.dropdownMenuStyle = { display: "none" };
-    }
-
-    this.setState(newState);
-  };
 
   render() {
     return (

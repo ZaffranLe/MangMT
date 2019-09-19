@@ -32,6 +32,8 @@ function decimalToHexa(num) {
 
 export default function ipSubnet(ip, subnet = "") {
     const result = {};
+    result["networks"] = {};
+    result["networks"]["networks"] = [];
     const data = {};
     let ipv4Reg = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/;
     if (!ipv4Reg.test(ip)) {
@@ -243,7 +245,6 @@ export default function ipSubnet(ip, subnet = "") {
         network["range"] += end.join(".");
         networks.push(network);
     }
-    result["networks"] = {};
     for (let i = jumpIndex; i < ipOctets.length; i++) {
         ipOctets[i] = "*";
     }
