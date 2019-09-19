@@ -1,221 +1,6 @@
 import _ from "lodash";
 
-const LEAD_MAX_SHIFT = 3;
-const PRO_MAX_SHIFT = 4;
-const NORMAL_MAX_SHIFT = 4;
-
 let schedule = [];
-const employees = {
-    NamNH20: {
-        group: 1,
-        maxShift: LEAD_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    },
-    DatNT11: {
-        group: 1,
-        maxShift: LEAD_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    },
-    VanQTH: {
-        group: 1,
-        maxShift: LEAD_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    },
-    TungPT15: {
-        group: 1,
-        maxShift: LEAD_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    },
-    ThoVH3: {
-        group: 1,
-        maxShift: PRO_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    },
-    GiangHT7: {
-        group: 1,
-        maxShift: PRO_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [1, 8, 15, 22, 29],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    },
-    ToanNV32: {
-        group: 1,
-        maxShift: PRO_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [
-            15,
-            16,
-            17,
-            18,
-            19,
-            20,
-            21,
-            22,
-            23,
-            24,
-            25,
-            26,
-            27,
-            28,
-            29,
-            30
-        ],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    },
-    LucNV6: {
-        group: 1,
-        maxShift: NORMAL_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    },
-    LongTT2: {
-        group: 1,
-        maxShift: NORMAL_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    },
-    AnhNTV9: {
-        group: 1,
-        maxShift: NORMAL_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [2, 9, 16, 23, 30, 4, 6, 11, 13, 18, 20, 25, 27],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    },
-    TuanNA106: {
-        group: 1,
-        maxShift: NORMAL_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    },
-    SangDV4: {
-        group: 1,
-        maxShift: NORMAL_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    },
-    ThuyNN9: {
-        group: 2,
-        maxShift: NORMAL_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    },
-    HuanHV3: {
-        group: 2,
-        maxShift: NORMAL_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    },
-    TuTT17: {
-        group: 2,
-        maxShift: NORMAL_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    },
-    DungNT173: {
-        group: 2,
-        maxShift: NORMAL_MAX_SHIFT,
-        dayShift: 0,
-        dayShiftAsFirst: 1,
-        dayShiftAsSecond: 1,
-        firstOnSecondRate: 1,
-        options: [],
-        weekendShift: 0,
-        dayWithG2: 0,
-        done: false
-    }
-};
 
 function checkDayOption(date, option) {
     // 15th day in month = 15
@@ -285,7 +70,8 @@ function isWeekend(date, weekends = []) {
     return false;
 }
 
-export default function getSchedule(year, month, weekends = []) {
+export default function getSchedule(year, month, employees, weekends = []) {
+    let failureCount = 0;
     let scheduled = false;
     const numOfDaysInMonth = new Date(year, month, 0).getDate();
     while (!scheduled) {
@@ -314,8 +100,10 @@ export default function getSchedule(year, month, weekends = []) {
             let randomEmp2 = chooseRandom(listEmployeeId.length, 7);
             let emp1 = listEmployeeId[randomEmp1];
             let emp2 = listEmployeeId[randomEmp2];
-            employeesClone[emp1]["maxShift"] += 1;
-            employeesClone[emp2]["maxShift"] += 1;
+            if (emp1 !== emp2) {
+                employeesClone[emp1]["maxShift"] += 1;
+                employeesClone[emp2]["maxShift"] += 1;
+            }
         }
         let days = [];
         for (let i = 0; i < numOfDaysInMonth; i++) {
@@ -487,11 +275,24 @@ export default function getSchedule(year, month, weekends = []) {
                 break;
             }
         }
+        let count = 0;
+        Object.keys(employeesClone).forEach(emp => {
+            if (employeesClone[emp]["weekendShift"] == 0) {
+                count++;
+            }
+        });
+        if (count > 1) {
+            scheduled = false;
+        }
+        // if (scheduled || failureCount === 100) {
         if (scheduled) {
             let result = {};
             result["schedule"] = schedule;
             result["employees"] = employeesClone;
+            console.log(failureCount)
             return result;
+        } else {
+            failureCount++;
         }
     }
 }

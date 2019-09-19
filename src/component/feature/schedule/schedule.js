@@ -11,10 +11,14 @@ import {
     Button,
     Tab,
     Table,
-    Modal
+    Modal,
+    Icon,
+    Form,
+    TextArea
 } from "semantic-ui-react";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.scss";
+import _ from "lodash";
 const DragAndDropCalendar = withDragAndDrop(Calendar);
 
 const empColor = {
@@ -88,6 +92,205 @@ const empColor = {
     }
 };
 
+const LEAD_MAX_SHIFT = 3;
+const PRO_MAX_SHIFT = 4;
+const NORMAL_MAX_SHIFT = 4;
+
+const employeesData = {
+    NamNH20: {
+        group: 1,
+        maxShift: LEAD_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    },
+    DatNT11: {
+        group: 1,
+        maxShift: LEAD_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    },
+    VanQTH: {
+        group: 1,
+        maxShift: LEAD_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    },
+    TungPT15: {
+        group: 1,
+        maxShift: LEAD_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    },
+    ThoVH3: {
+        group: 1,
+        maxShift: PRO_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    },
+    GiangHT7: {
+        group: 1,
+        maxShift: PRO_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    },
+    ToanNV32: {
+        group: 1,
+        maxShift: PRO_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    },
+    LucNV6: {
+        group: 1,
+        maxShift: NORMAL_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    },
+    LongTT2: {
+        group: 1,
+        maxShift: NORMAL_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    },
+    AnhNTV9: {
+        group: 1,
+        maxShift: NORMAL_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    },
+    TuanNA106: {
+        group: 1,
+        maxShift: NORMAL_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    },
+    SangDV4: {
+        group: 1,
+        maxShift: NORMAL_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    },
+    ThuyNN9: {
+        group: 2,
+        maxShift: NORMAL_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    },
+    HuanHV3: {
+        group: 2,
+        maxShift: NORMAL_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    },
+    TuTT17: {
+        group: 2,
+        maxShift: NORMAL_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    },
+    DungNT173: {
+        group: 2,
+        maxShift: NORMAL_MAX_SHIFT,
+        dayShift: 0,
+        dayShiftAsFirst: 1,
+        dayShiftAsSecond: 1,
+        firstOnSecondRate: 1,
+        options: [],
+        weekendShift: 0,
+        dayWithG2: 0,
+        done: false
+    }
+};
+
 moment.locale("vi-VN");
 const localizer = momentLocalizer(moment);
 
@@ -101,17 +304,123 @@ const ColoredDateCellWrapper = ({ children }) =>
     });
 
 class EmpModal extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            emp: {},
+            empId: "",
+            options: ""
+        };
+    }
 
-  render() {
-    return (
-      <Modal>
-        
-      </Modal>
-    );
-  }
+    componentWillReceiveProps(nextProps) {
+        const { empId } = nextProps;
+        const emp = _.cloneDeep(employeesData[empId]);
+        let options = "";
+        if (Boolean(emp)) {
+            options = _.clone(emp["options"].toString());
+        }
+        this.setState({
+            empId,
+            emp,
+            options
+        });
+    }
+
+    handleSave = () => {
+        const { emp, options } = this.state;
+        if (options.length > 0) {
+            const { year, month } = this.props;
+            const optionValue = options.split(",");
+            const dayOptions = [];
+            let numOfDayInMonth = new Date(year, month, 0).getDate();
+            for (let option of optionValue) {
+                if (option[0] == "w") {
+                    let dayInWeek = option.slice(1);
+                    for (let i = 0; i < numOfDayInMonth; i++) {
+                        let date = new Date(year, month - 1, i + 1);
+                        if (date.getDay() == dayInWeek) {
+                            dayOptions.push(date.getDate());
+                        }
+                    }
+                } else if (option.indexOf("-") !== -1) {
+                    let index = option.indexOf("-");
+                    let dayStart = parseInt(option.slice(0, index), 10);
+                    let dayEnd = parseInt(option.slice(index + 1), 10);
+                    for (let i = dayStart; i <= dayEnd; i++) {
+                        dayOptions.push(i);
+                    }
+                } else {
+                    dayOptions.push(parseInt(option, 10));
+                }
+            }
+            emp["options"] = _.clone(
+                dayOptions.filter(
+                    (option, index) => dayOptions.indexOf(option) === index
+                )
+            );
+        }
+        employeesData[this.props.empId] = _.cloneDeep(emp);
+        console.log(emp);
+        this.props.handleCloseModal();
+    };
+
+    handleChangeValue = e => {
+        const value = parseInt(e.target.value, 10);
+        this.setState({
+            emp: {
+                ...this.state.emp,
+                [e.target.name]: value
+            }
+        });
+    };
+
+    handleChangeOptions = (e, data) => {
+        this.setState({
+            options: data.value
+        });
+    };
+
+    render() {
+        const { empId, empModal, handleCloseModal } = this.props;
+        const { emp, options } = this.state;
+        return (
+            <Modal open={empModal} onClose={handleCloseModal}>
+                <Modal.Header>Change data of {empId}</Modal.Header>
+                <Modal.Content>
+                    {Boolean(emp) && (
+                        <Form>
+                            <Form.Field>
+                                <label>Max shift</label>
+                                <Input
+                                    name="maxShift"
+                                    value={emp["maxShift"]}
+                                    onChange={this.handleChangeValue}
+                                />
+                            </Form.Field>
+                            <Form.Field>
+                                <label>Options</label>
+                                <TextArea
+                                    label="Options"
+                                    value={options}
+                                    onChange={this.handleChangeOptions}
+                                />
+                            </Form.Field>
+                        </Form>
+                    )}
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button
+                        content="Save"
+                        icon="checkmark"
+                        positive
+                        onClick={this.handleSave}
+                    />
+                    <Button content="Close" onClick={handleCloseModal} />
+                </Modal.Actions>
+            </Modal>
+        );
+    }
 }
 
 class Schedule extends React.Component {
@@ -121,7 +430,9 @@ class Schedule extends React.Component {
             events: [],
             year: new Date().getFullYear(),
             month: new Date().getMonth() + 1,
-            employees: {}
+            employees: {},
+            currentEmp: "",
+            empModal: false
         };
     }
 
@@ -131,9 +442,26 @@ class Schedule extends React.Component {
         });
     };
 
+    handleSelectEmp = emp => {
+        this.setState({
+            empModal: true,
+            currentEmp: emp
+        });
+    };
+
+    handleCloseModal = () => {
+        this.setState({
+            empModal: false
+        });
+    };
+
     createSchedule = () => {
         const { year, month } = this.state;
-        const result = getSchedule(this.state.year, this.state.month);
+        const result = getSchedule(
+            this.state.year,
+            this.state.month,
+            employeesData
+        );
         const events = [];
         for (let day of result["schedule"]) {
             const event1 = {};
@@ -225,7 +553,7 @@ class Schedule extends React.Component {
     };
 
     render() {
-        const { employees } = this.state;
+        const { employees, currentEmp, empModal, year, month } = this.state;
         const rows = [];
         Object.keys(employees).forEach((emp, index) => {
             rows.push(
@@ -250,7 +578,13 @@ class Schedule extends React.Component {
                         {employees[emp].dayShiftAsSecond - 1}
                     </Table.Cell>
                     <Table.Cell>{employees[emp].dayWithG2}</Table.Cell>
-                    <Table.Cell>{employees[emp].weekendShift}</Table.Cell>
+                    <Table.Cell>
+                        {employees[emp].weekendShift}{" "}
+                        {(employees[emp].weekendShift == 0 ||
+                            employees[emp].weekendShift == 3) && (
+                            <Icon name="warning sign" color="red" />
+                        )}
+                    </Table.Cell>
                     <Table.Cell>
                         {employees[emp].done ? "True" : "False"}{" "}
                     </Table.Cell>
@@ -291,7 +625,7 @@ class Schedule extends React.Component {
                 )
             },
             {
-                menuItem: "Info",
+                menuItem: "Stat",
                 render: () => (
                     <Segment>
                         <Table>
@@ -320,6 +654,65 @@ class Schedule extends React.Component {
                             <Table.Body>
                                 {rows.map(row => {
                                     return row;
+                                })}
+                            </Table.Body>
+                        </Table>
+                    </Segment>
+                )
+            },
+            {
+                menuItem: "Employee Info",
+                render: () => (
+                    <Segment>
+                        <Table>
+                            <Table.Header>
+                                <Table.Row>
+                                    <Table.HeaderCell>
+                                        Employee ID
+                                    </Table.HeaderCell>
+                                    <Table.HeaderCell>
+                                        Employee Max shift
+                                    </Table.HeaderCell>
+                                    <Table.HeaderCell>
+                                        Employee Day off
+                                    </Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
+                            <Table.Body>
+                                {Object.keys(employeesData).map(emp => {
+                                    return (
+                                        <Table.Row>
+                                            <Table.Cell>
+                                                <Button
+                                                    style={{
+                                                        backgroundColor:
+                                                            empColor[emp][
+                                                                "bgColor"
+                                                            ],
+                                                        color:
+                                                            empColor[emp][
+                                                                "color"
+                                                            ]
+                                                    }}
+                                                    onClick={() =>
+                                                        this.handleSelectEmp(
+                                                            emp
+                                                        )
+                                                    }
+                                                >
+                                                    {emp}
+                                                </Button>
+                                            </Table.Cell>
+                                            <Table.Cell>
+                                                {employeesData[emp]["maxShift"]}
+                                            </Table.Cell>
+                                            <Table.Cell>
+                                                {employeesData[emp][
+                                                    "options"
+                                                ].toString()}
+                                            </Table.Cell>
+                                        </Table.Row>
+                                    );
                                 })}
                             </Table.Body>
                         </Table>
@@ -369,6 +762,13 @@ class Schedule extends React.Component {
                 <Segment>
                     <Tab panes={panes} />
                 </Segment>
+                <EmpModal
+                    empId={currentEmp}
+                    empModal={empModal}
+                    handleCloseModal={this.handleCloseModal}
+                    year={year}
+                    month={month}
+                />
             </>
         );
     }
