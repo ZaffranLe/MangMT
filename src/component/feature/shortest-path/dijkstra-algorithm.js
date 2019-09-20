@@ -3,21 +3,21 @@ const _ = require("lodash");
 export default function dijkstra(data) {
     const nodes = [];
     const results = [];
-    for (let node of data.nodes) {
+    for (let node of data.nodes) { // Cau truc du lieu cua 1 dinh
         let obj = {};
         obj.node = node.id;
         obj.way = node.id;
         obj.currentValue = Infinity;
         obj.values = [];
-        obj.links = data.links.filter(link => {
+        obj.links = data.links.filter(link => { // Danh sach cac dinh ke voi dinh hien tai
             return link.source === node.id;
         });
         obj.marked = false;
         nodes.push(obj);
     }
 
-    for (let node of nodes) {
-        let otherNodes = _.cloneDeep(
+    for (let node of nodes) { // Moi vong lap se xuat phat tu 1 dinh khac nhau
+        let otherNodes = _.cloneDeep( // Loc lay danh sach cac dinh con lai
             nodes.filter(other => {
                 return other !== node;
             })
@@ -28,11 +28,12 @@ export default function dijkstra(data) {
         currentNode.currentValue = 0;
         markedNodes.push(node);
         while (markedNodes.length < nodes.length) {
-            for (let other of otherNodes) { 
+            // Dieu kien dung: chung nao chua chon tat ca cac diem thi se khong dung lai
+            for (let other of otherNodes) { // Xet cac diem con lai
                 for (let link of currentNode.links) {
                     if (link.target === other.node) {
-                        if (
-                            other.currentValue >
+                        if ( // So sanh gia tri hien tai voi gia tri moi tai diem dang xet
+                            other.currentValue > // va chon gia tri nho hon
                             currentNode.currentValue +
                                 parseInt(link.distance, 10)
                         ) {
@@ -56,6 +57,7 @@ export default function dijkstra(data) {
                 console.log(other.node);
             }
             for (let other of otherNodes) {
+                // Vong lap lay ra dinh co gia tri nho nhat lam dinh xuat phat trong buoc tiep theo
                 if (other.currentValue === min) {
                     other.marked = true;
                     currentNode = _.cloneDeep(other);
@@ -70,6 +72,7 @@ export default function dijkstra(data) {
         }
         results.push(markedNodes);
     }
+    // Cau truc du lieu cac doi tuong de hien thi len giao dien web
     const dijkstraTables = [];
     results.map(result => {
         let dijkstraTable = {};

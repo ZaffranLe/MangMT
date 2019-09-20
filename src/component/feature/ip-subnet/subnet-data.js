@@ -1,4 +1,4 @@
-const subnets = [
+const subnets = [ // Danh sach 32 subnet mask
     {
         ip: "128.0.0.0",
         type: "Other",
