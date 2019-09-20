@@ -6,6 +6,7 @@ import ShortestPath from "./component/feature/shortest-path/ShortestPath";
 import Schedule from "./component/feature/schedule/schedule";
 import BinaryAlgorithms from "./component/feature/binary-algorithms/BinaryAlgorithms";
 import IPSubnet from "./component/feature/ip-subnet/IPSubnet";
+import ExcelToJson from "./component/feature/xlsx-to-json/ExcelToJson"
 const Routes = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const Routes = () => {
       <Route path="/feature/schedule/" component={Schedule} />
       <Route path="/feature/binary-algorithms/" component={BinaryAlgorithms} />
       <Route path="/feature/ip-subnet-v4/" component={IPSubnet} />
+      <Route path="/feature/excel-json/" component={ExcelToJson} />
     </>
   );
 };

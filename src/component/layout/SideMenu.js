@@ -66,6 +66,15 @@ class SideMenu extends Component {
             NOC NET Schedule
           </Menu.Item>
         </Link>
+        <Link to="/feature/excel-json">
+          <Menu.Item
+            name="excel-json"
+            active={activeItem === "excel-json"}
+            onClick={this.handleItemClick}
+          >
+            Excel To Json Converter
+          </Menu.Item>
+        </Link>
       </Sidebar>
     );
   }
