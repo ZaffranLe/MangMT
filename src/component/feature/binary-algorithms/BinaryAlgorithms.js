@@ -70,7 +70,9 @@ class BinaryAlgorithms extends Component {
         word: "",
         type: "word",
         result: "",
-        g: ""
+        g: "",
+        marginLeft: 0,
+        currentStep: 0
       }
     };
   }
@@ -156,6 +158,20 @@ class BinaryAlgorithms extends Component {
       udpChecksum: {
         ...this.state.udpChecksum,
         stepIdx: data.value
+      }
+    });
+  };
+
+  handleChangeRange = e => {
+    let currentStep = e.target.value;
+    let marginLeft = 16.25 * this.state.crc.result["calcResult"][currentStep]["count"];
+    let currentResult = this.state.crc.result["calcResult"][currentStep]["result"];
+    this.setState({
+      crc: {
+        ...this.state.crc,
+        marginLeft,
+        currentResult,
+        currentStep
       }
     });
   };
@@ -538,7 +554,7 @@ class BinaryAlgorithms extends Component {
                 <Segment>
                   <Grid>
                     <Grid.Row>
-                      <Grid.Column width={6}>
+                      <Grid.Column width={16}>
                         <Form>
                           <Form.Field>
                             <Input
@@ -584,20 +600,47 @@ class BinaryAlgorithms extends Component {
                               label="Result"
                               data-name="result"
                               data-algorithm="crc"
-                              value={crc.result}
+                              value={crc.result["R"]}
                               fluid
                               size="large"
                             />
                           </Form.Field>
                         </Form>
                       </Grid.Column>
-                      <Grid.Column width={10}>
-                        <Image
-                          src={crcExample}
-                          bordered
-                          fluid
-                          onClick={() => this.handleZoomImage(crcExample)}
-                        />
+                    </Grid.Row>
+                    <Grid.Row>
+                      <Grid.Column width={16}>
+                        {Boolean(crc.result !== "") && (
+                          <>
+                            <Form.Input
+                              value={crc.currentStep}
+                              type="range"
+                              min={0}
+                              max={crc.result["calcResult"].length - 1}
+                              onChange={this.handleChangeRange}
+                            />
+                            <Segment style={{ overflow: "auto" }}>
+                              <Statistic.Group horizontal size="small">
+                                <Statistic>
+                                  <Statistic.Value>{crc.result["D"]}</Statistic.Value>
+                                </Statistic>
+                                <Statistic style={{ marginLeft: crc.marginLeft }}>
+                                  <Statistic.Value>
+                                    {crc.result["calcResult"][crc.currentStep]["D"]}
+                                  </Statistic.Value>
+                                </Statistic>
+                                <Statistic style={{ marginLeft: crc.marginLeft }}>
+                                  <Statistic.Value>{crc.result["G"]}</Statistic.Value>
+                                </Statistic>
+                                <Statistic style={{ marginLeft: crc.marginLeft }}>
+                                  <Statistic.Value>
+                                    {crc.result["calcResult"][crc.currentStep]["result"]}
+                                  </Statistic.Value>
+                                </Statistic>
+                              </Statistic.Group>
+                            </Segment>
+                          </>
+                        )}
                       </Grid.Column>
                     </Grid.Row>
                   </Grid>
