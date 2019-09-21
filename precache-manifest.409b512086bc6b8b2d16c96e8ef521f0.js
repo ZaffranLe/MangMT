@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "e8c322de9658cbeb8a774b6624167c2c",
-    "url": "/MangMT/static/media/brand-icons.e8c322de.woff2"
+    "revision": "faff92145777a3cbaf8e7367b4807987",
+    "url": "/MangMT/static/media/icons.faff9214.woff"
   },
   {
-    "revision": "0c83b31dc197ce261ec6",
+    "revision": "d9926dacb2aaf2f1329a",
     "url": "/MangMT/static/css/main.affedd14.chunk.css"
   },
   {
@@ -44,12 +44,12 @@ self.__precacheManifest = [
     "url": "/MangMT/static/media/icons.0ab54153.woff2"
   },
   {
-    "revision": "faff92145777a3cbaf8e7367b4807987",
-    "url": "/MangMT/static/media/icons.faff9214.woff"
+    "revision": "e8c322de9658cbeb8a774b6624167c2c",
+    "url": "/MangMT/static/media/brand-icons.e8c322de.woff2"
   },
   {
-    "revision": "0c83b31dc197ce261ec6",
-    "url": "/MangMT/static/js/main.0c83b31d.chunk.js"
+    "revision": "d9926dacb2aaf2f1329a",
+    "url": "/MangMT/static/js/main.d9926dac.chunk.js"
   },
   {
     "revision": "a046592bac8f2fd96e994733faf3858c",
@@ -92,7 +92,7 @@ self.__precacheManifest = [
     "url": "/MangMT/static/css/1.854b77c6.chunk.css"
   },
   {
-    "revision": "3f3c8b8a48117296138a1502a605badb",
+    "revision": "d860fc2a646630f89e232aad49db904a",
     "url": "/MangMT/index.html"
   }
 ];
