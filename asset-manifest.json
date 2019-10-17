@@ -1,18 +1,20 @@
 {
-  "main.css": "/MangMT/static/css/main.affedd14.chunk.css",
-  "main.js": "/MangMT/static/js/main.8eb8dae3.chunk.js",
-  "main.js.map": "/MangMT/static/js/main.8eb8dae3.chunk.js.map",
-  "static/css/1.854b77c6.chunk.css": "/MangMT/static/css/1.854b77c6.chunk.css",
-  "static/js/1.7d95159b.chunk.js": "/MangMT/static/js/1.7d95159b.chunk.js",
-  "static/js/1.7d95159b.chunk.js.map": "/MangMT/static/js/1.7d95159b.chunk.js.map",
-  "runtime~main.js": "/MangMT/static/js/runtime~main.21e4fbea.js",
-  "runtime~main.js.map": "/MangMT/static/js/runtime~main.21e4fbea.js.map",
-  "static/media/semantic.min.css": "/MangMT/static/media/outline-icons.cd6c777f.woff2",
-  "static/media/avatar.jpg": "/MangMT/static/media/avatar.176baacb.jpg",
-  "static/media/crc-example.png": "/MangMT/static/media/crc-example.680335b0.png",
-  "static/css/1.854b77c6.chunk.css.map": "/MangMT/static/css/1.854b77c6.chunk.css.map",
-  "static/css/main.affedd14.chunk.css.map": "/MangMT/static/css/main.affedd14.chunk.css.map",
-  "index.html": "/MangMT/index.html",
-  "precache-manifest.2afac604d5ea78d53350deff72311459.js": "/MangMT/precache-manifest.2afac604d5ea78d53350deff72311459.js",
-  "service-worker.js": "/MangMT/service-worker.js"
+  "files": {
+    "main.css": "/MangMT/static/css/main.31622fcd.chunk.css",
+    "main.js": "/MangMT/static/js/main.59963147.chunk.js",
+    "main.js.map": "/MangMT/static/js/main.59963147.chunk.js.map",
+    "runtime~main.js": "/MangMT/static/js/runtime~main.312ddad6.js",
+    "runtime~main.js.map": "/MangMT/static/js/runtime~main.312ddad6.js.map",
+    "static/css/2.8989b3dd.chunk.css": "/MangMT/static/css/2.8989b3dd.chunk.css",
+    "static/js/2.c20b9f98.chunk.js": "/MangMT/static/js/2.c20b9f98.chunk.js",
+    "static/js/2.c20b9f98.chunk.js.map": "/MangMT/static/js/2.c20b9f98.chunk.js.map",
+    "index.html": "/MangMT/index.html",
+    "precache-manifest.d59a7ae6e08ddddd4a34c104e5c17e93.js": "/MangMT/precache-manifest.d59a7ae6e08ddddd4a34c104e5c17e93.js",
+    "service-worker.js": "/MangMT/service-worker.js",
+    "static/css/2.8989b3dd.chunk.css.map": "/MangMT/static/css/2.8989b3dd.chunk.css.map",
+    "static/css/main.31622fcd.chunk.css.map": "/MangMT/static/css/main.31622fcd.chunk.css.map",
+    "static/media/avatar.jpg": "/MangMT/static/media/avatar.176baacb.jpg",
+    "static/media/semantic.min.css": "/MangMT/static/media/outline-icons.ef60a4f6.woff",
+    "static/media/crc-example.png": "/MangMT/static/media/crc-example.680335b0.png"
+  }
 }
