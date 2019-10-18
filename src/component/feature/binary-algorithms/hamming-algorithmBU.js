@@ -104,7 +104,7 @@ export function fixHammingCode(hammingCode) { // Ham sua loi hamming code
             pList.push(p);
         }
     }
-    let sumFalseParity = 0;
+    let falseCount = 0;
     for (let p of pList) { // Kiem tra su chinh xac cua cac parity bit
         let countBit1 = 0;
         for (let bitObj of p["binaries"]) {
@@ -117,23 +117,44 @@ export function fixHammingCode(hammingCode) { // Ham sua loi hamming code
                 bitObj["isTrue"] = true;
             }
         } else { // Danh dau cac bit sai
-            sumFalseParity += p["parityBit"]["index"] +1;
+            p["parityBit"]["falseCount"] += 1;
+            for (let bitObj of p["binaries"]) {
+                bitObj["falseCount"] += 1;
+            }
+            falseCount++;
         }
     }
 
-    let result = {};
+    let wrongBitIndex = -1; // Bien luu vi tri cua bit bi sai
 
-    if (sumFalseParity === 0) { // Neu vi tri cua bit sai = -1, tuc la khong co bit nao sai trong chuoi dau vao
+    for (let p of pList) { // Dem so lan xuat hien cua cac bit trong cac parity bit sai
+        if (
+            !p["parityBit"]["isTrue"] &&
+            p["parityBit"]["falseCount"] === falseCount
+        ) {
+            wrongBitIndex = p["parityBit"]["index"];
+            break;
+        }
+        for (let bitObj of p["binaries"]) {
+            if (!bitObj["isTrue"] && bitObj["falseCount"] === falseCount) {
+                wrongBitIndex = bitObj["index"];
+                break;
+            }
+        }
+    }
+    let result = {};
+    if (wrongBitIndex === -1) { // Neu vi tri cua bit sai = -1, tuc la khong co bit nao sai trong chuoi dau vao
         result["hammingCode"] = "Hamming code is good!";
         return result;
     } else { // Bit bi sai se la bit xuat hien nhieu lan nhat trong cac parity bit khong chinh xac
         // eslint-disable-next-line
-        hammingCode[sumFalseParity-1] =
-            hammingCode[sumFalseParity-1] == 1 ? "0" : "1";
+        hammingCode[wrongBitIndex] =
+            hammingCode[wrongBitIndex] == 1 ? "0" : "1";
     }
     let originalBinaries = hammingCode.filter((bit, i) => { // Tra ve chuoi ban dau
         return !isExponentOf2(i + 1);
     });
+
     // Cau truc du lieu luu tru ket qua hien thi len giao dien web
     originalBinaries = originalBinaries.join("");
     hammingCode = hammingCode.join("");
