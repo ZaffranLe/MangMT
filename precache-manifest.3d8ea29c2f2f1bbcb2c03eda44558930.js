@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "402a88c1b96d075aa93efeba1376643a",
+    "revision": "6d9fe9db9544c92bfaedaea5dd21047f",
     "url": "/MangMT/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MangMT/static/css/2.8989b3dd.chunk.css"
   },
   {
-    "revision": "2a68540da5594d6c8a0f",
+    "revision": "e4fcb4d6143a19795079",
     "url": "/MangMT/static/css/main.31622fcd.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MangMT/static/js/2.c20b9f98.chunk.js"
   },
   {
-    "revision": "2a68540da5594d6c8a0f",
-    "url": "/MangMT/static/js/main.59963147.chunk.js"
+    "revision": "e4fcb4d6143a19795079",
+    "url": "/MangMT/static/js/main.12b4f792.chunk.js"
   },
   {
     "revision": "313cd6c5c0ca4b650151",
