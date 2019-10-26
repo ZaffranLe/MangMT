@@ -1,6 +1,11 @@
 const _ = require("lodash");
 
 export default function bellmanFord(data) {
+  for (let link of data.links) {
+    if (link.distance < 0) {
+      return false;
+    }
+  }
   const bellmanFordResult = [];
   const originalNodes = [];
   for (let node of data.nodes) { // Cau truc du lieu cua 1 dinh

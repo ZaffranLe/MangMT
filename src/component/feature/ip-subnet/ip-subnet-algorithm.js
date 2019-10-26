@@ -64,7 +64,7 @@ export default function ipSubnet(ip, subnet = "") {
             })
             .join("")
     );
-    let subnetBinary = _.clone( // Doi subnet mák sang chuoi bit
+    let subnetBinary = _.clone( // Doi subnet mask sang chuoi bit
         subnet["ip"]
             .split(".")
             .map(octet => {
